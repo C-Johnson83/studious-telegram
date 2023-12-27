@@ -21,9 +21,7 @@ router.get('/:id', async (req, res) => {
   // be sure to include its associated Products
   try {
     const category = await Category.findOne({
-      where: {
-        id: req.params.id,
-      },
+      where: { id: req.params.id },
       include: [Product],
     });
     res.json(category);
@@ -46,9 +44,7 @@ router.put('/:id', async (req, res) => {
   // update a category by its `id` value
   try {
     const category = await Category.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
+      where: { id: req.params.id },
     });
     res.status(200).json(category);
   } catch (err) {
@@ -61,9 +57,7 @@ router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
   try {
     const category = await Category.destroy({
-      where: {
-        id: req.params.id,
-      },
+      where: { id: req.params.id },
     });
     res.status(200).json(category);
   } catch (err) {
